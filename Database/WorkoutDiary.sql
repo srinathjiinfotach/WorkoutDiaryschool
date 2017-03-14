@@ -87,11 +87,11 @@ DROP TABLE IF EXISTS `GroupCategories`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `GroupCategories` (
   `groupID` varchar(30) NOT NULL,
-  `Exercise_id` int(11) NOT NULL,
-  `plassering` tinyint(3) unsigned DEFAULT NULL,
-  PRIMARY KEY (`mal_name`,`Exercise_id`),
-  KEY `Exercise_id` (`Exercise_id`),
-  CONSTRAINT `GroupCategories` FOREIGN KEY (`mal_name`) REFERENCES `mal` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  `groupName` varchar(30) NOT NULL,
+  `exerciseID` int(10) NOT NULL,
+  PRIMARY KEY (`groupID`),
+  KEY `exerciseID` (`exerciseID`),
+  CONSTRAINT `GroupCategories` FOREIGN KEY (`exerciseID`) REFERENCES `Excercise` (`exerciseID`) ON DELETE CASCADE ON UPDATE CASCADE,
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -105,66 +105,62 @@ LOCK TABLES `GroupCategories` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Exercise_i_trening`
+-- Table structure for table `ExerciseReplacement`
 --
 
-DROP TABLE IF EXISTS `Exercise_i_trening`;
+DROP TABLE IF EXISTS `ExerciseReplacement`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Exercise_i_trening` (
-  `trening_id` int(11) NOT NULL,
-  `Exercise_id` int(11) NOT NULL,
-  `plassering` int(11) DEFAULT NULL,
-  PRIMARY KEY (`trening_id`,`Exercise_id`),
-  KEY `Exercise_id` (`Exercise_id`),
-  CONSTRAINT `Exercise_i_trening_ibfk_1` FOREIGN KEY (`trening_id`) REFERENCES `treningsøkt` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `Exercise_i_trening_ibfk_2` FOREIGN KEY (`Exercise_id`) REFERENCES `Exercise` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+CREATE TABLE `ExerciseReplacement` (
+  `replacementID` int(10) NOT NULL,
+  `exerciseID` int(10) NOT NULL,
+  PRIMARY KEY (`replacementID`,`exerciseID`),
+  KEY `Exercise_id` (`exerciseID`),
+  CONSTRAINT `ExerciseReplacement` FOREIGN KEY (`exerciseID`) REFERENCES `Exercise` (`exerciseID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Exercise_i_trening`
+-- Dumping data for table `ExerciseReplacement`
 --
 
-LOCK TABLES `Exercise_i_trening` WRITE;
-/*!40000 ALTER TABLE `Exercise_i_trening` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Exercise_i_trening` ENABLE KEYS */;
+LOCK TABLES `ExerciseReplacement` WRITE;
+/*!40000 ALTER TABLE `ExerciseReplacement` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ExerciseReplacement` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `erstatt_med`
+-- Table structure for table `ResultLog`
 --
 
-DROP TABLE IF EXISTS `erstatt_med`;
+DROP TABLE IF EXISTS `ResultLog`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `erstatt_med` (
-  `Exercise_id` int(11) NOT NULL,
-  `erstatt_med_id` int(11) NOT NULL,
-  PRIMARY KEY (`Exercise_id`,`erstatt_med_id`),
-  KEY `erstatt_med_id` (`erstatt_med_id`),
-  CONSTRAINT `erstatt_med_ibfk_1` FOREIGN KEY (`Exercise_id`) REFERENCES `Exercise` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `erstatt_med_ibfk_2` FOREIGN KEY (`erstatt_med_id`) REFERENCES `Exercise` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+CREATE TABLE `ResultLog` (
+  `goalPeriod` varchar(15) NOT NULL,
+  `period` timestamp NOT NULL,
+  'bestResult' varchar(15),
+  PRIMARY KEY (`goalPeriod`),
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `erstatt_med`
+-- Dumping data for table `ResultLog`
 --
 
-LOCK TABLES `erstatt_med` WRITE;
-/*!40000 ALTER TABLE `erstatt_med` DISABLE KEYS */;
-/*!40000 ALTER TABLE `erstatt_med` ENABLE KEYS */;
+LOCK TABLES `ResultLog` WRITE;
+/*!40000 ALTER TABLE `ResultLog` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ResultLog` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `gruppe`
+-- Table structure for table `Results`
 --
 
-DROP TABLE IF EXISTS `gruppe`;
+DROP TABLE IF EXISTS `Results`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `gruppe` (
+CREATE TABLE `Results` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`)
