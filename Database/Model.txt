@@ -1,0 +1,14 @@
+Exercise(exerciseID, exerciseName, description, totRepetitions, totSets, type, load, distance, duration)
+Goal(goalID, creationDate, achievedDate, exerciseID)
+GroupCategories(groupID, groupName, exerciseID)
+exerciseReplacement(replacementID, exerciseID)
+ResultLog(goalPeriod, period, bestResult)
+Results(resultID, result, period, workoutID, exerciseID)
+exerciseTemplate(name, locationFolder, exerciseID)
+Workout(workoutID, date, timeStarted, duration, lvlOfPerformance, note, weatherConditions, temperature, humidity, ventilation, spectators)
+PulsAndGPS(measureID, period, pulse, longitude, latitude, altitude, exerciseID)
+
+
+
+
+
