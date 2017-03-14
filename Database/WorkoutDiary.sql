@@ -86,7 +86,7 @@ DROP TABLE IF EXISTS `GroupCategories`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `GroupCategories` (
-  `groupID` varchar(30) NOT NULL,
+  `groupID` varchar(30) NOT NULL AUTO_INCREMENT,
   `groupName` varchar(30) NOT NULL,
   `exerciseID` int(10) NOT NULL,
   PRIMARY KEY (`groupID`),
@@ -161,7 +161,7 @@ DROP TABLE IF EXISTS `Results`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Results` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `resultID` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
