@@ -7,12 +7,9 @@ public class Driver {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         try {
-            // 1.Get a connection to database
             Connection myConn =  DriverManager.getConnection("jdbc:mysql://mysql.stud.ntnu.no/aleksahh_Group83_WorkDiary", "aleksahh_WorkDia", "CourseTracker"); // Endre her!
             Statement myStmt = myConn.createStatement();
             Actions action = new Actions(myConn, myStmt);
-
-
 
             while (true) {
                 System.out.println("\nWhat would you like to view?");

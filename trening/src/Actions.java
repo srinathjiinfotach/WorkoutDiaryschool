@@ -15,7 +15,6 @@ public class Actions {
         myStmt = statement;
     }
 
-    // Usecase 1: Printer ut de 3 beste resultatene fra spesifiserte øvelser.
     public void records(Scanner scanner) throws SQLException {
         ResultSet myRs;
 
@@ -32,7 +31,7 @@ public class Actions {
         String str;
         String order;
         if (s.equals("L")) {str = "totLoad"; order = "desc";}
-        else {str = "Varighet"; order = "asc";}
+        else {str = "Duration"; order = "asc";}
 
         String getExercise = "select name from Exercise where exerciseID = " + exerciseID;
         myRs = myStmt.executeQuery(getExercise);
@@ -42,15 +41,14 @@ public class Actions {
         String notation;
         if (str.equals("performance")) {notation = " kg";} else {notation = " min";}
 
-        sql = "select " +  str + " as REKORDER from Checklist where Checklist.exerciseID = " + exerciseID + " order by " + str + " " + order + " limit 3";
+        sql = "select " +  str + " as RECORDS from Checklist where Checklist.exerciseID = " + exerciseID + " order by " + str + " " + order + " limit 3";
         myRs = myStmt.executeQuery(sql);
 
         while (myRs.next()) {
-            System.out.println(myRs.getString("REKORDER") + notation);
+            System.out.println(myRs.getString("RECORDS") + notation);
         }
     }
 
-    // Usecase 2: Printer ut div info fra øktene i tidsintervallet som velges av bruker.
     public void workout(Scanner scanner) throws SQLException {
 
         System.out.println("From which date-interval do you want to get exercises, written on the form YYYYMMDD,YYYYMMDD, " +
@@ -88,9 +86,9 @@ public class Actions {
         }
     }
 
-    // Usecase 3: Registrer workout.
+
     public void registerWorkout(Scanner scanner) throws SQLException {
-        // 1. Be brukeren oppgi verdier for dato og varighet.  Vær, temp, tilskuere, form, prestasjon og notat er valgfritt.  Trykker enter for å la disse stå blankt.
+
         System.out.print("Enter date (format: YYYYMMDD): ");
         String date = scanner.nextLine();
         System.out.print("Enter duration in min: ");
@@ -110,7 +108,7 @@ public class Actions {
                 + date + ", " + duration + ", " + temp + "," + pulse + "," + longitude + "," + latitude + "," +
                 altitude + ")";
         myStmt.executeUpdate(sql);
-        // 2. Spørre brukeren om han vil legge til øvelse som er gjennomført i økten.
+
 
         while (true) {
             System.out.println("Do you want to enter an exercise for this workout? (y/n): ");
@@ -145,7 +143,7 @@ public class Actions {
         }
     }
 
-    // Usecase 4: Legger inn nye øvelser
+
     public void registerExercise(Scanner scanner) throws SQLException {
 
         while (true) {
@@ -167,7 +165,7 @@ public class Actions {
 
     }
 
-    // Usecase 5: Legg inn mål for øvelser
+
     public void registerGoal(Scanner scanner) throws SQLException {
 
         Calendar cal = Calendar.getInstance();
@@ -203,8 +201,6 @@ public class Actions {
                 String sett = scanner.nextLine();
                 System.out.print("Enter number of repetitions: ");
                 String reps = scanner.nextLine();
-                //System.out.println("Enter todays date in the format YYYYMMDD");
-                //String dato = scanner.nextLine();
 
                 sql = "insert into Goal (exerciseID, creationDate, totLoad, totSets, totRepetitions, achieved) values "
                         + "(" + exerciseID + ", " + formattedDate + ", " + belastning + ", " + sett + ", "	+ reps + ", " + "0)";
@@ -212,11 +208,9 @@ public class Actions {
                 myStmt.executeUpdate("Update Goal set achieved = 1 where exerciseID = " + exerciseID); // Setter de andre målene lik 1.
                 myStmt.executeUpdate(sql);
             }
-            else {// Kondisjon
+            else {// Condition
                 System.out.print("Enter duration: ");
                 String durat = scanner.nextLine();
-                //System.out.println("Enter todays date in the format YYYYMMDD");
-                //String dato = scanner.nextLine();
 
                 sql = "insert into Goal (exerciseID, creationDate, duration, achieved) values" +
                         "(" + exerciseID + ", " + formattedDate + ", " + durat + ", 0)";
