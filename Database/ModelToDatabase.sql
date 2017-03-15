@@ -59,12 +59,14 @@ CREATE TABLE Workout(
 	spectators	INT);
 
 CREATE TABLE PulseAndGPS(
-	measureID	INT		NOT NULL	PRIMARY KEY,
+	measureID	INT		NOT NULL	AUTO_INCREMENT,
 	period		TIMESTAMP	NOT NULL,
 	pulse		INT,
 	longitude	GEOGRAPHY,
 	latitude	GEOGRAPHY,
 	altitude	GEOGRAPHY,
-	exerciseID	INT(10)		NOT NULL	FOREIGN KEY REFERENCES Exercise);
+	exerciseID	INT(10)		NOT NULL,
+	PRIMARY KEY(measureID),
+	FOREIGN KEY(exerciseID) REFERENCES Exercise(exerciseID));
 
 
