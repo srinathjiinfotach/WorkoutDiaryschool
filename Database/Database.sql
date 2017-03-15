@@ -7,6 +7,10 @@ CREATE TABLE Workout (
 	form 		INT,
 	performance	INT,
 	note 		VARCHAR(80),
+	pulse		INT,
+	longitude	VARCHAR(20),
+	latitude	VARCHAR(20),
+	altitude	VARCHAR(20),
     	PRIMARY KEY(date));
 
 CREATE TABLE Exercise (
