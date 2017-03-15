@@ -4,13 +4,13 @@ import java.util.Scanner;
 import java.sql.*;
 import java.util.TimeZone;
 
-public class Actions {
+public class Usecases {
     Connection myConn;
     Statement myStmt;
     ResultSet myRs;
 
 
-    public Actions(Connection connection, Statement statement) throws SQLException {
+    public Usecases(Connection connection, Statement statement) throws SQLException {
         myConn = connection;
         myStmt = statement;
     }

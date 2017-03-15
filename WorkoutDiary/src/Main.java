@@ -1,7 +1,7 @@
 import java.sql.*;
 import java.util.Scanner;
 
-public class Driver {
+public class Main {
 
 
     public static void main(String[] args) {
@@ -9,7 +9,7 @@ public class Driver {
         try {
             Connection myConn =  DriverManager.getConnection("jdbc:mysql://mysql.stud.ntnu.no/aleksahh_Group83_WorkDiary", "aleksahh_WorkDia", "CourseTracker"); // Endre her!
             Statement myStmt = myConn.createStatement();
-            Actions action = new Actions(myConn, myStmt);
+            Usecases action = new Usecases(myConn, myStmt);
 
             while (true) {
                 System.out.println("\nWhat would you like to view?");
