@@ -1,9 +1,11 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="WorkoutDiary:jar">
+  <artifact name="WorkoutDiary:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/WorkoutDiary_jar</output-path>
-    <root id="archive" name="WorkoutDiary.jar">
-      <element id="module-output" name="WorkoutDiary" />
-      <element id="library" level="project" name="mysql-connector-java-5.1.40-bin.jar" />
+    <root id="root">
+      <element id="archive" name="WorkoutDiary.jar">
+        <element id="module-output" name="WorkoutDiary" />
+        <element id="dir-copy" path="$PROJECT_DIR$/lib/mysql-connector-java-5.1.40-bin.jar" />
+      </element>
     </root>
   </artifact>
 </component>
